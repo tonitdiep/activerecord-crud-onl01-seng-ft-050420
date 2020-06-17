@@ -29,24 +29,27 @@ def can_be_created_in_a_block(args = __)
   # release_date == 1990
   
   Movie.create do |m|
-    __
+    # m.title = "Home Alone"
+    # Movie.create(:title => "Home Alone"
+    # Moive.create(:release_date => "1990")
   end
 end
 
 def can_get_the_first_item_in_the_database
-  __
+  Movie.first
 end
 
 def can_get_the_last_item_in_the_database
-  __
+  Movie.last
 end
 
 def can_get_size_of_the_database
-  __
+  Movie.all.size
 end
 
 def can_find_the_first_item_from_the_database_using_id
-  __
+  # Movie.find(1)
+  Movie.first
 end
 
 def can_find_by_multiple_attributes
@@ -54,7 +57,9 @@ def can_find_by_multiple_attributes
   # title == "Title"
   # release_date == 2000
   # director == "Me"
-  __
+  Movie.find_by(title: "title")
+  Movie.find_by(release_date: "2000")
+  Moive.find_by(director: "Me")
 end
 
 def can_find_using_where_clause_and_be_sorted
@@ -83,18 +88,18 @@ def can_update_multiple_items_at_once
   5.times do |i|
     Movie.create(title: "Movie_#{i}", release_date: 2000+i)
   end
-  __
+  Movie.update_all(title: "A Movie")
 end
 
 def can_destroy_a_single_item
   Movie.create(title: "That One Where the Guy Kicks Another Guy Once")
-  __
-  __
+  movie = Movie.find_by(title: "That One Where the Guy Kicks Another Guy Once")  #not needed..
+  Movie.destroy_all   
 end
 
 def can_destroy_all_items_at_once
   10.times do |i|
     Movie.create(title: "Movie_#{i}")
   end
-  __
+    Movie.destroy_all
 end
